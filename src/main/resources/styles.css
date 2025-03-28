@@ -1,0 +1,129 @@
+/* General styling for the root */
+.root {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-background-color: #f4f4f9;
+}
+
+/* TabPane styling */
+.tab-pane {
+    -fx-background-color: #e0e0e0;
+}
+
+.tab-pane .tab-header-area {
+    -fx-padding: 5 5 0 5;
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: #e0e0e0;
+}
+
+.tab {
+    -fx-background-color: #d3d3d3;
+    -fx-padding: 5 15 5 15;
+}
+
+.tab:selected {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #3b82f6;
+    -fx-border-width: 0 0 2 0;
+}
+
+.tab .tab-label {
+    -fx-text-fill: #333333;
+}
+
+.tab:selected .tab-label {
+    -fx-text-fill: #3b82f6;
+}
+
+/* TableView styling */
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d1d5db;
+    -fx-border-width: 1;
+}
+
+.table-view .column-header {
+    -fx-background-color: #e5e7eb;
+    -fx-border-color: #d1d5db;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #374151;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d1d5db;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f9fafb;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #bfdbfe;
+}
+
+/* Button styling (for non-delete buttons) */
+.button {
+    -fx-background-color: #3b82f6;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5;
+    -fx-padding: 8 15 8 15;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #2563eb;
+}
+
+/* Delete button styling */
+.delete-button {
+    -fx-background-color: #ef4444; /* Red */
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5;
+    -fx-padding: 8 15 8 15;
+    -fx-font-weight: bold;
+}
+
+.delete-button:hover {
+    -fx-background-color: #dc2626; /* Darker red on hover */
+}
+
+/* Add Tab Button styling */
+.add-tab-button {
+    -fx-background-color: #10b981;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10 5 10;
+    -fx-font-size: 16px;
+}
+
+.add-tab-button:hover {
+    -fx-background-color: #059669;
+}
+
+/* TextField styling */
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d1d5db;
+    -fx-border-width: 1;
+    -fx-background-radius: 5;
+    -fx-padding: 8;
+}
+
+.text-field:focused {
+    -fx-border-color: #3b82f6;
+    -fx-border-width: 2;
+}
+
+/* VBox styling for each tab */
+.tab-content {
+    -fx-background-color: #f4f4f9;
+    -fx-padding: 10;
+}

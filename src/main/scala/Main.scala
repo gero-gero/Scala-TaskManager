@@ -40,6 +40,7 @@ class TaskListPane(tabName: String, lastListFile: String, tabPane: TabPane) {
 
   val taskField = new TextField {
     promptText = s"Enter task description for $tabName"
+    styleClass += "text-field"
   }
 
   val addButton = new Button("Add Task") {
@@ -50,9 +51,12 @@ class TaskListPane(tabName: String, lastListFile: String, tabPane: TabPane) {
         taskField.text = ""
       }
     }
+    styleClass += "button"
   }
 
-  val table = new TableView[Task](tasks)
+  val table = new TableView[Task](tasks) {
+    styleClass += "table-view"
+  }
 
   table.columns ++= Seq(
     new TableColumn[Task, Int] {
@@ -60,12 +64,14 @@ class TaskListPane(tabName: String, lastListFile: String, tabPane: TabPane) {
       cellValueFactory = { cellData =>
         cellData.value.idProp.asInstanceOf[scalafx.beans.value.ObservableValue[Int, Int]]
       }
+      prefWidth = 50
     },
     new TableColumn[Task, String] {
       text = "Description"
       cellValueFactory = { cellData =>
         cellData.value.descProp.asInstanceOf[scalafx.beans.value.ObservableValue[String, String]]
       }
+      prefWidth = 200
     },
     new TableColumn[Task, Boolean] {
       text = "Completed"
@@ -93,6 +99,7 @@ class TaskListPane(tabName: String, lastListFile: String, tabPane: TabPane) {
           }
         }
       }
+      prefWidth = 100
     }
   )
 
@@ -103,6 +110,7 @@ class TaskListPane(tabName: String, lastListFile: String, tabPane: TabPane) {
         tasks -= selectedTask
       }
     }
+    styleClass += "delete-button" // Use the new delete-button class
   }
 
   val saveButton = new Button("Save List") {
@@ -122,6 +130,7 @@ class TaskListPane(tabName: String, lastListFile: String, tabPane: TabPane) {
         }
       }
     }
+    styleClass += "button"
   }
 
   val loadButton = new Button("Load List") {
@@ -143,11 +152,21 @@ class TaskListPane(tabName: String, lastListFile: String, tabPane: TabPane) {
         }
       }
     }
+    styleClass += "button"
+  }
+
+  // Arrange buttons in two rows using HBox
+  val taskButtons = new HBox(10) {
+    children = Seq(addButton, deleteButton)
+  }
+
+  val fileButtons = new HBox(10) {
+    children = Seq(saveButton, loadButton)
   }
 
   val pane = new VBox(10) {
-    children = Seq(taskField, addButton, deleteButton, saveButton, loadButton, table)
-    padding = scalafx.geometry.Insets(10)
+    children = Seq(taskField, taskButtons, fileButtons, table)
+    styleClass += "tab-content"
   }
 
   val tab = new Tab {
@@ -198,6 +217,7 @@ object TaskManagerGUI extends JFXApp3 {
         tabPane.selectionModel.value.select(newTaskListPane.tab)
         tabCounter += 1
       }
+      styleClass += "add-tab-button"
     }
 
     // Layout with TabPane and "+" button
@@ -210,9 +230,12 @@ object TaskManagerGUI extends JFXApp3 {
       padding = scalafx.geometry.Insets(10)
     }
 
+    val appScene = new Scene(layout, 450, 450)
+    appScene.getStylesheets.add(getClass.getResource("/styles.css").toExternalForm)
+
     stage = new PrimaryStage {
       title = "Task Manager"
-      scene = new Scene(layout, 400, 400)
+      scene = appScene
     }
 
     // Save the list of tabs on close
