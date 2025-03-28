@@ -1,0 +1,1 @@
+/apps/scala/scala-3-project-template/tasks2.json
