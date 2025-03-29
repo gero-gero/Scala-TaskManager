@@ -10,6 +10,8 @@ A simple, tabbed task management GUI application built with Scala 3.6.4 and Scal
 
 ## Screenshots
 ![Task Manager GUI](screenshots/task_manager.png)
+![Task Manager GUI](screenshots/dark_mode.png)
+
 
 ## Prerequisites
 - **Java Development Kit (JDK)**: JDK 17 or later (Java 24 tested).
