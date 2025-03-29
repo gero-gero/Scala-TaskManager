@@ -9,10 +9,10 @@ lazy val root = project
     libraryDependencies ++= Seq(
       "org.scalameta" %% "munit" % "1.0.0" % Test,
       "org.scalafx" %% "scalafx" % "22.0.0-R33",
-      "com.lihaoyi" %% "upickle" % "3.3.1" // Add upickle for JSON serialization
+      "com.lihaoyi" %% "upickle" % "3.3.1"
     ),
     libraryDependencies ++= {
-      val javaFXVersion = "24"
+      val javaFXVersion = "17" // Changed to match Java 17
       Seq(
         "org.openjfx" % "javafx-controls" % javaFXVersion,
         "org.openjfx" % "javafx-fxml" % javaFXVersion

@@ -2,7 +2,7 @@ import scalafx.application.JFXApp3
 import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.control.{Button, TableColumn, TableView, Tab, TabPane, TextField}
-import scalafx.scene.layout.{HBox, VBox}
+import scalafx.scene.layout.{BorderPane, HBox, VBox}
 import scalafx.collections.ObservableBuffer
 import scalafx.beans.property.{BooleanProperty, IntegerProperty, StringProperty}
 import scalafx.Includes._
@@ -110,7 +110,7 @@ class TaskListPane(tabName: String, lastListFile: String, tabPane: TabPane) {
         tasks -= selectedTask
       }
     }
-    styleClass += "delete-button" // Use the new delete-button class
+    styleClass += "delete-button"
   }
 
   val saveButton = new Button("Save List") {
@@ -187,6 +187,7 @@ object TaskManagerGUI extends JFXApp3 {
     val tabPane = new TabPane()
     val tabListFile = "tab_list.txt"
     var tabCounter = 1
+    var isDarkMode = false
 
     // Load the list of tabs from the previous session
     val initialTabs = if (Files.exists(Paths.get(tabListFile))) {
@@ -225,13 +226,41 @@ object TaskManagerGUI extends JFXApp3 {
       children = Seq(tabPane, addTabButton)
     }
 
-    val layout = new VBox(10) {
-      children = Seq(tabBar)
-      padding = scalafx.geometry.Insets(10)
+    // Define the scene first
+    val appScene = new Scene(new BorderPane, 450, 450)
+    appScene.getStylesheets.add(getClass.getResource("/light.css").toExternalForm)
+
+    // Dark Mode Toggle Button
+    val darkModeButton = new Button("\u263D") { // Unicode moon symbol for dark mode
+      styleClass += "dark-mode-button"
+      onAction = _ => {
+        isDarkMode = !isDarkMode
+        appScene.getStylesheets.clear()
+        if (isDarkMode) {
+          appScene.getStylesheets.add(getClass.getResource("/dark.css").toExternalForm)
+          text = "\u2600" // Unicode sun symbol for light mode
+        } else {
+          appScene.getStylesheets.add(getClass.getResource("/light.css").toExternalForm)
+          text = "\u263D" // Unicode moon symbol for dark mode
+        }
+      }
     }
 
-    val appScene = new Scene(layout, 450, 450)
-    appScene.getStylesheets.add(getClass.getResource("/styles.css").toExternalForm)
+    // Main layout using BorderPane to position the dark mode button
+    val layout = new BorderPane {
+      center = new VBox(10) {
+        children = Seq(tabBar)
+        padding = scalafx.geometry.Insets(10)
+      }
+      bottom = new HBox {
+        children = Seq(darkModeButton)
+        alignment = scalafx.geometry.Pos.BottomRight
+        padding = scalafx.geometry.Insets(10)
+      }
+    }
+
+    // Set the layout as the scene's root
+    appScene.root = layout
 
     stage = new PrimaryStage {
       title = "Task Manager"

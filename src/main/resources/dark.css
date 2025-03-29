@@ -1,0 +1,152 @@
+/* General styling for the root */
+.root {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-background-color: #1f2937; /* Dark gray background */
+}
+
+/* TabPane styling */
+.tab-pane {
+    -fx-background-color: #374151; /* Darker gray for tab pane */
+}
+
+.tab-pane .tab-header-area {
+    -fx-padding: 5 5 0 5;
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: #374151;
+}
+
+.tab {
+    -fx-background-color: #4b5563; /* Medium gray for tabs */
+    -fx-padding: 5 15 5 15;
+}
+
+.tab:selected {
+    -fx-background-color: #111827; /* Very dark gray for selected tab */
+    -fx-border-color: #60a5fa; /* Lighter blue for border */
+    -fx-border-width: 0 0 2 0;
+}
+
+.tab .tab-label {
+    -fx-text-fill: #d1d5db; /* Light gray text */
+}
+
+.tab:selected .tab-label {
+    -fx-text-fill: #60a5fa; /* Lighter blue for selected tab text */
+}
+
+/* TableView styling */
+.table-view {
+    -fx-background-color: #111827;
+    -fx-border-color: #4b5563;
+    -fx-border-width: 1;
+}
+
+.table-view .column-header {
+    -fx-background-color: #1f2937;
+    -fx-border-color: #4b5563;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #d1d5db;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: #111827;
+    -fx-border-color: #4b5563;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #1f2937;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #1e40af; /* Darker blue for selected row */
+}
+
+/* TableCell styling for task text */
+.table-cell {
+    -fx-text-fill: #fffbfa; /* Near-white for task text */
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: #ffffff; /* White text for selected row to ensure readability */
+}
+
+/* Button styling (for non-delete buttons) */
+.button {
+    -fx-background-color: #60a5fa; /* Lighter blue */
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5;
+    -fx-padding: 8 15 8 15;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #3b82f6; /* Slightly darker blue on hover */
+}
+
+/* Delete button styling */
+.delete-button {
+    -fx-background-color: #f87171; /* Lighter red */
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5;
+    -fx-padding: 8 15 8 15;
+    -fx-font-weight: bold;
+}
+
+.delete-button:hover {
+    -fx-background-color: #ef4444; /* Darker red on hover */
+}
+
+/* Add Tab Button styling */
+.add-tab-button {
+    -fx-background-color: #34d399; /* Lighter green */
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10 5 10;
+    -fx-font-size: 16px;
+}
+
+.add-tab-button:hover {
+    -fx-background-color: #10b981; /* Darker green on hover */
+}
+
+/* TextField styling */
+.text-field {
+    -fx-background-color: #374151;
+    -fx-text-fill: #d1d5db;
+    -fx-border-color: #4b5563;
+    -fx-border-width: 1;
+    -fx-background-radius: 5;
+    -fx-padding: 8;
+}
+
+.text-field:focused {
+    -fx-border-color: #60a5fa;
+    -fx-border-width: 2;
+}
+
+/* VBox styling for each tab */
+.tab-content {
+    -fx-background-color: #1f2937;
+    -fx-padding: 10;
+}
+
+/* Dark Mode Toggle Button styling */
+.dark-mode-button {
+    -fx-background-color: #4b5563;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10 5 10;
+    -fx-font-size: 14px;
+}
+
+.dark-mode-button:hover {
+    -fx-background-color: #6b7280;
+}
